@@ -57,8 +57,9 @@ public class PriorityQueue {
 
 	public void enqueue(String gameName, String gameGenre, String releaseDate, String rating)
 			throws QueueFullException { // Put something in a queue
-
+		System.out.println(size);
 		if (!this.isFull()) {
+			list.addLast(gameName + gameGenre + releaseDate + rating);
 
 			node.setName(gameName);
 			node.setGenre(gameGenre);
@@ -73,14 +74,16 @@ public class PriorityQueue {
 		}
 	}
 
-	Object dequeue() throws QueueEmptyException { // Take something out of a queue
+	public Object dequeue() throws QueueEmptyException { // Take something out of a queue
 		Object item;
-
+		System.out.println(size);
 		if (!this.isEmpty()) {
 			item = list.get(tail);
 			list.remove(tail);
+			
 			size--;
-			head -= 1;
+			head--;
+			tail--;
 			return item;
 		} else {
 			throw new QueueEmptyException();

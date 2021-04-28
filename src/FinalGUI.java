@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import PQ.PriorityQueue;
 import exceptions.LinkedListEmptyException;
 import exceptions.LinkedListFullException;
+import exceptions.QueueEmptyException;
 import exceptions.QueueFullException;
 import sort.InsertionSort;
 
@@ -130,19 +131,61 @@ public class FinalGUI {
 		JButton btnNameAsc = new JButton("Name Asc.");
 		btnNameAsc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				int rowCount = model.getRowCount();
+				
+				InsertionSort is = new InsertionSort();
+				
+				String[] arr = new String[rowCount];
+				for (int i = 0; i < rowCount; i++) {
+					try {
+						arr[i] = list.peekRow(i);
+					} catch (LinkedListEmptyException e1) {
+						e1.printStackTrace();
+					}
+				}
+				
+				is.sort(arr);
+				
+				for (int i = 0; i < rowCount; i++) {
+					model.setValueAt(arr[i].charAt(0), i, 0);
+					model.setValueAt(arr[i].charAt(1), i, 1);
+					model.setValueAt(arr[i].charAt(2), i, 2);
+					model.setValueAt(arr[i].charAt(3), i, 3);
+				}
 			}
 		});
 		
-		btnNameAsc.setBounds(744, 61, 119, 25);
+		btnNameAsc.setBounds(744, 11, 119, 25);
 		frame.getContentPane().add(btnNameAsc);
 		
 		JButton btnNameDesc = new JButton("Name Des.");
 		btnNameDesc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int rowCount = model.getRowCount();
+				
+				InsertionSort is = new InsertionSort();
+				
+				String[] arr = new String[rowCount];
+				for (int i = 0; i < rowCount; i++) {
+					try {
+						arr[i] = list.peekRow(i);
+					} catch (LinkedListEmptyException e1) {
+						e1.printStackTrace();
+					}
+				}
+				
+				is.sortDesc(arr);
+				
+				for (int i = 0; i < rowCount; i++) {
+					model.setValueAt(arr[i].charAt(0), i, 0);
+					model.setValueAt(arr[i].charAt(1), i, 1);
+					model.setValueAt(arr[i].charAt(2), i, 2);
+					model.setValueAt(arr[i].charAt(3), i, 3);
+				}
 			}
 		});
 		
-		btnNameDesc.setBounds(744, 97, 119, 25);
+		btnNameDesc.setBounds(744, 47, 119, 25);
 		frame.getContentPane().add(btnNameDesc);
 		
 		JButton btnRatingAscending = new JButton("Rating Asc.");
@@ -172,7 +215,7 @@ public class FinalGUI {
 			}
 		});
 		
-		btnRatingAscending.setBounds(744, 241, 119, 25);
+		btnRatingAscending.setBounds(744, 227, 119, 25);
 		frame.getContentPane().add(btnRatingAscending);
 		
 		JButton btnRatingDescending = new JButton("Rating Des.");
@@ -202,8 +245,129 @@ public class FinalGUI {
 			}
 		});
 		
-		btnRatingDescending.setBounds(744, 277, 119, 25);
+		btnRatingDescending.setBounds(744, 263, 119, 25);
 		frame.getContentPane().add(btnRatingDescending);
+		
+		JButton btnGenreDes = new JButton("Genre Des.");
+		btnGenreDes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int rowCount = model.getRowCount();
+				
+				InsertionSort is = new InsertionSort();
+				
+				String[] arr = new String[rowCount];
+				for (int i = 0; i < rowCount; i++) {
+					try {
+						arr[i] = list.peekRow(i);
+					} catch (LinkedListEmptyException e1) {
+						e1.printStackTrace();
+					}
+				}
+				
+				is.sortDesc(arr);
+				
+				for (int i = 0; i < rowCount; i++) {
+					model.setValueAt(arr[i].charAt(0), i, 0);
+					model.setValueAt(arr[i].charAt(1), i, 1);
+					model.setValueAt(arr[i].charAt(2), i, 2);
+					model.setValueAt(arr[i].charAt(3), i, 3);
+				}
+			}
+		});
+		btnGenreDes.setBounds(744, 119, 119, 25);
+		frame.getContentPane().add(btnGenreDes);
+		
+		JButton btnGenreAsc = new JButton("Genre Asc.");
+		btnGenreAsc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int rowCount = model.getRowCount();
+				
+				InsertionSort is = new InsertionSort();
+				
+				String[] arr = new String[rowCount];
+				for (int i = 0; i < rowCount; i++) {
+					try {
+						arr[i] = list.peekRow(i);
+					} catch (LinkedListEmptyException e1) {
+						e1.printStackTrace();
+					}
+				}
+				
+				is.sort(arr);
+				
+				for (int i = 0; i < rowCount; i++) {
+					model.setValueAt(arr[i].charAt(0), i, 0);
+					model.setValueAt(arr[i].charAt(1), i, 1);
+					model.setValueAt(arr[i].charAt(2), i, 2);
+					model.setValueAt(arr[i].charAt(3), i, 3);
+				}
+			}
+		});
+		btnGenreAsc.setBounds(744, 83, 119, 25);
+		frame.getContentPane().add(btnGenreAsc);
+		
+		JButton btnReleaseDes = new JButton("Release Des.");
+		btnReleaseDes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int rowCount = model.getRowCount();
+				
+				InsertionSort is = new InsertionSort();
+				
+				String[] arr = new String[rowCount];
+				for (int i = 0; i < rowCount; i++) {
+					try {
+						arr[i] = list.peekRow(i);
+					} catch (LinkedListEmptyException e1) {
+						e1.printStackTrace();
+					}
+				}
+				
+				is.sortDesc(arr);
+				
+				for (int i = 0; i < rowCount; i++) {
+					model.setValueAt(arr[i].charAt(0), i, 0);
+					model.setValueAt(arr[i].charAt(1), i, 1);
+					model.setValueAt(arr[i].charAt(2), i, 2);
+					model.setValueAt(arr[i].charAt(3), i, 3);
+				}
+			}
+		});
+		btnReleaseDes.setBounds(744, 191, 119, 25);
+		frame.getContentPane().add(btnReleaseDes);
+		
+		JButton btnReleaseAsc = new JButton("Release Asc.");
+		btnReleaseAsc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int rowCount = model.getRowCount();
+				
+				InsertionSort is = new InsertionSort();
+				
+				String[] arr = new String[rowCount];
+				for (int i = 0; i < rowCount; i++) {
+					try {
+						arr[i] = list.peekRow(i);
+					} catch (LinkedListEmptyException e1) {
+						e1.printStackTrace();
+					}
+				}
+				
+				is.sort(arr);
+				
+				for (int i = 0; i < rowCount; i++) {
+					model.setValueAt(arr[i].charAt(0), i, 0);
+					model.setValueAt(arr[i].charAt(1), i, 1);
+					model.setValueAt(arr[i].charAt(2), i, 2);
+					model.setValueAt(arr[i].charAt(3), i, 3);
+				}
+			}
+		});
+		
+		/*
+		 * End of sorts
+		 */
+		
+		btnReleaseAsc.setBounds(744, 155, 119, 25);
+		frame.getContentPane().add(btnReleaseAsc);
 
 		// Create rows object
 		Object[] row = new Object[4];
@@ -233,9 +397,8 @@ public class FinalGUI {
 					// Try to add the game to the gameList named list made at the top
 					try {
 						list.addLast(game);
-						lblAddedVals.setText("Most recently added data: " + list.print());
+						lblAddedVals.setText("Most recently added data: " + list.printNew());
 					} catch (LinkedListFullException e1) {
-						System.out.println("Error");
 					}
 
 					// Enqueue the inputed fields into the priority queue, use the priority queue to
@@ -274,15 +437,15 @@ public class FinalGUI {
 
 					try {
 						list.remove(i);
+						pq.dequeue();
 
 						lblAddedVals.setText(list.print());
 
 					} catch (LinkedListEmptyException e1) {
 						e1.printStackTrace();
+					} catch (QueueEmptyException e1) {
+						e1.printStackTrace();
 					}
-
-					pq.size--;
-					list.size--;
 				} else {
 					JOptionPane.showMessageDialog(frame, "Please select a row to delete");
 				}

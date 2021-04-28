@@ -115,4 +115,13 @@ public class GameList {
 		}
 		return listString;
 	}
+	
+	public String printNew() {
+		String listString = new String();
+		
+		listString += " " + gameList[size - 1].getName() + " " + gameList[size - 1].getGenre() + " " + gameList[size - 1].getRating()
+				+ " " + gameList[size - 1].getReleaseDate() + " ";
+		
+		return listString;
+	}
 }
