@@ -1,8 +1,5 @@
 package PQ;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-
 import exceptions.QueueEmptyException;
 import exceptions.QueueFullException;
 
@@ -12,6 +9,7 @@ public class PriorityQueue {
 	private int tail;
 	public int size;
 	private int maxSize;
+	Node next;
 	public Node node = new Node();
 
 	// Constructors
@@ -72,15 +70,37 @@ public class PriorityQueue {
 		} else {
 			throw new QueueFullException();
 		}
+		/*
+		if (!this.isFull()) {
+
+			Node temp = new Node();
+			
+			temp.setName(gameName);
+			temp.setGenre(gameGenre);
+			temp.setReleaseDate(releaseDate);
+			temp.setRating(rating);
+
+			tail = (tail + 1) % maxSize;
+			size++;
+			head++;
+			
+			return temp;
+		} else {
+			throw new QueueFullException();
+		}*/
 	}
 
 	// Remove the value first put into the queue
 	public void dequeue() throws QueueEmptyException {
 		
-		if (!this.isEmpty()) {
+		if (!this.isEmpty()) {			
+			node.setName("");
+			node.setGenre("");
+			node.setReleaseDate("");
+			node.setRating("");
+			
 			size--;
 			head -= 1;
-			
 		} else {
 			throw new QueueEmptyException();
 		}

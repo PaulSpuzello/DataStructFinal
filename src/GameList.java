@@ -1,3 +1,4 @@
+import PQ.PriorityQueue;
 import exceptions.LinkedListEmptyException;
 import exceptions.LinkedListFullException;
 
@@ -69,8 +70,15 @@ public class GameList {
 	
 	public String peekRow(int row) throws LinkedListEmptyException {
 		if (!this.isEmpty()) {
-
+			//PriorityQueue pq = new PriorityQueue();
+			
+			//pq.node.name = gameList[row].name;
+			//pq.node.genre = gameList[row].genre;
+			//pq.node.releaseDate = gameList[row].releaseDate;
+			//pq.node.rating = gameList[row].rating;
+			
 			return  gameList[row].name + gameList[row].genre + gameList[row].releaseDate + gameList[row].rating;
+			//return pq;
 		} else 
 			throw new LinkedListEmptyException();
 		}

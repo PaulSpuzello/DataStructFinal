@@ -103,11 +103,19 @@ class FinalGUITest {
 	/*
 	 * Test Priority Queue
 	 */
-/*
+
 	@Test
 	void testEnqueue() throws QueueFullException, QueueEmptyException {
 		pq.enqueue("Super Mario", "Platformer", "8/12/1996", "4/5");
-		//System.out.println(pq.size);
-		assertEquals("Super Mario", pq.printPriorityQueue());
-	}*/
+		
+		assertEquals("Super Mario", pq.node.name);
+	}
+	
+	@Test
+	void testDequeue() throws QueueFullException, QueueEmptyException {
+		pq.enqueue("Super Mario", "Platformer", "8/12/1996", "4/5");
+		pq.dequeue();
+		
+		assertEquals("", pq.node.name);
+	}
 }

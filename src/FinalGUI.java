@@ -29,6 +29,26 @@ import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.SwingConstants;
 
+/**************************************************************
+* Name        : DataStructFinal
+* Author      : Paul Spuzello
+* Created     : 3/26/2021
+* Course      : CIS 152 Data Structures
+* Version     : 1.0
+* OS          : Windows 10
+* Copyright   : This is my own original work based on
+*               specifications issued by our instructor
+* Description : This program is a table that takes in games and lets you sort them. 
+* 				
+*               Input:  User input for the game
+*               
+*               Output: User's input is put into the table of data.
+*               
+* Academic Honesty: I attest that this is my original work. I have not used unauthorized source code, 
+* 					either modified or unmodified. I have not given other fellow student(s) access to
+*					my program.         
+***************************************************************/
+
 public class FinalGUI {
 	public static void main(String[] args) {
 		
@@ -155,16 +175,51 @@ public class FinalGUI {
 					is.sort(arr);
 					
 					for (int i = 0; i < rowCount; i++) {
-						model.setValueAt(arr[i].charAt(0), i, 0);
-						model.setValueAt(arr[i].charAt(1), i, 1);
-						model.setValueAt(arr[i].charAt(2), i, 2);
-						model.setValueAt(arr[i].charAt(3), i, 3);
+						for (int j = 0; j < table.getColumnCount(); j++) {
+							model.setValueAt(arr[i].charAt(0), i, 0);
+							model.setValueAt(arr[i].charAt(1), i, 1);
+							model.setValueAt(arr[i].charAt(2), i, 2);
+							model.setValueAt(arr[i].charAt(3), i, 3);
+						}
 					}
+
 				}
 
 			}	
 		});
+		/*
+		int rowCount = model.getRowCount();
 		
+		InsertionSort is = new InsertionSort();
+		
+		String[] arr = new String[model.getRowCount()];
+		
+		if (model.getRowCount() == 0) {
+			JOptionPane.showMessageDialog(frame, "Table is empty, enter a game to sort");
+		}
+		else {
+			for (int i = 0; i < rowCount; i++) {
+			}
+			PriorityQueue newPQ = new PriorityQueue();
+			try {
+				newPQ = list.peekRow(0);
+			} catch (LinkedListEmptyException e) {
+				e.printStackTrace();
+			}
+			
+			//is.sort(newPQ);
+			
+			for (int i = 0; i < rowCount; i++) {
+				for (int j = 0; j < table.getColumnCount(); j++) {
+					model.setValueAt(String.valueOf(newPQ.node.name), i, 0);
+					model.setValueAt(String.valueOf(newPQ.node.genre), i, 1);
+					model.setValueAt(String.valueOf(newPQ.node.releaseDate), i, 2);
+					model.setValueAt(String.valueOf(newPQ.node.rating), i, 3);
+				}
+			}
+
+		}
+		*/
 		btnNameAsc.setBounds(744, 11, 119, 25);
 		frame.getContentPane().add(btnNameAsc);
 		
@@ -502,14 +557,17 @@ public class FinalGUI {
 
 				// The user must click the row to delete, otherwise won't work. If it is clicked
 				// after a row selected, it deletes that row
-				if (i >= 0) {
+				if (i == 0) {
+					JOptionPane.showMessageDialog(frame, "List cannot be empty once a game is entered");
+				}
+				else if (i >= 0) {
 					model.removeRow(i);
 
 					try {
 						list.remove(i);
 						pq.dequeue();
 
-						lblAddedVals.setText(list.print());
+						lblAddedVals.setText("Most recently deleted: " + list.printNew());
 
 					} catch (LinkedListEmptyException e1) {
 						e1.printStackTrace();
