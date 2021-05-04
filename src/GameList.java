@@ -4,11 +4,12 @@ import exceptions.LinkedListFullException;
 // Linked List
 public class GameList {
 
+	// Variables
 	public int size;
 	private int maxSize;
 	private Game gameList[];
 
-	// Constructors
+	// Constructor
 	public GameList() {
 		this.maxSize = 10;
 		this.size = 0;
@@ -68,20 +69,11 @@ public class GameList {
 	
 	public String peekRow(int row) throws LinkedListEmptyException {
 		if (!this.isEmpty()) {
-			return gameList[row].name + gameList[row].genre + gameList[row].releaseDate + gameList[row].rating;
-		} else {
+
+			return  gameList[row].name + gameList[row].genre + gameList[row].releaseDate + gameList[row].rating;
+		} else 
 			throw new LinkedListEmptyException();
 		}
-	}
-	
-	// Return without deleting the last value
-	public String peekRating(int row) throws LinkedListEmptyException {
-		if (!this.isEmpty()) {
-			return gameList[row].rating;
-		} else {
-			throw new LinkedListEmptyException();
-		}
-	}
 
 	// Remove a value depending on index
 	public double remove(int index) throws LinkedListEmptyException {
@@ -116,6 +108,7 @@ public class GameList {
 		return listString;
 	}
 	
+	// Print last added game
 	public String printNew() {
 		String listString = new String();
 		

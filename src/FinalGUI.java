@@ -31,12 +31,13 @@ import javax.swing.SwingConstants;
 
 public class FinalGUI {
 	public static void main(String[] args) {
+		
 		// Priority Queue and List of games
 		PriorityQueue pq = new PriorityQueue();
 		GameList list = new GameList();
 
 		/*
-		 * GUI Stuff
+		 * GUI Start
 		 */
 
 		// Create JFrame and table, color frame
@@ -91,19 +92,18 @@ public class FinalGUI {
 
 		// Adding things to the frame such as text inputs, buttons and labels
 		frame.getContentPane().setLayout(null);
-
+		
 		frame.getContentPane().add(pane);
-
 		frame.getContentPane().add(nameText);
 		frame.getContentPane().add(genreText);
 		frame.getContentPane().add(releaseText);
 		frame.getContentPane().add(ratingText);
-
 		frame.getContentPane().add(btnAdd);
 		frame.getContentPane().add(btnDelete);
 		frame.getContentPane().add(btnUpdate);
 
 		JLabel lblAddedVals = new JLabel(""); // Spot to describe the last entered game
+		
 		lblAddedVals.setVerticalAlignment(SwingConstants.TOP);
 		lblAddedVals.setBounds(0, 330, 734, 50);
 		frame.getContentPane().add(lblAddedVals);
@@ -126,38 +126,49 @@ public class FinalGUI {
 		frame.getContentPane().add(lblRating);
 		
 		/*
-		 * Sorts
+		 * Sort buttons
 		 */
+		
+		// Name Ascending sort
 		JButton btnNameAsc = new JButton("Name Asc.");
 		btnNameAsc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
 				int rowCount = model.getRowCount();
 				
 				InsertionSort is = new InsertionSort();
 				
-				String[] arr = new String[rowCount];
-				for (int i = 0; i < rowCount; i++) {
-					try {
-						arr[i] = list.peekRow(i);
-					} catch (LinkedListEmptyException e1) {
-						e1.printStackTrace();
+				String[] arr = new String[model.getRowCount()];
+				
+				if (model.getRowCount() == 0) {
+					JOptionPane.showMessageDialog(frame, "Table is empty, enter a game to sort");
+				}
+				else {
+					for (int i = 0; i < rowCount; i++) {
+						try {
+							arr[i] = list.peekRow(i);
+						} catch (LinkedListEmptyException e1) {
+							e1.printStackTrace();
+						}
+					}
+					
+					is.sort(arr);
+					
+					for (int i = 0; i < rowCount; i++) {
+						model.setValueAt(arr[i].charAt(0), i, 0);
+						model.setValueAt(arr[i].charAt(1), i, 1);
+						model.setValueAt(arr[i].charAt(2), i, 2);
+						model.setValueAt(arr[i].charAt(3), i, 3);
 					}
 				}
-				
-				is.sort(arr);
-				
-				for (int i = 0; i < rowCount; i++) {
-					model.setValueAt(arr[i].charAt(0), i, 0);
-					model.setValueAt(arr[i].charAt(1), i, 1);
-					model.setValueAt(arr[i].charAt(2), i, 2);
-					model.setValueAt(arr[i].charAt(3), i, 3);
-				}
-			}
+
+			}	
 		});
 		
 		btnNameAsc.setBounds(744, 11, 119, 25);
 		frame.getContentPane().add(btnNameAsc);
 		
+		// Name Descending sort
 		JButton btnNameDesc = new JButton("Name Des.");
 		btnNameDesc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -166,28 +177,36 @@ public class FinalGUI {
 				InsertionSort is = new InsertionSort();
 				
 				String[] arr = new String[rowCount];
-				for (int i = 0; i < rowCount; i++) {
-					try {
-						arr[i] = list.peekRow(i);
-					} catch (LinkedListEmptyException e1) {
-						e1.printStackTrace();
+				
+				if (model.getRowCount() == 0) {
+					JOptionPane.showMessageDialog(frame, "Table is empty, enter a game to sort");
+				}
+				else {
+					for (int i = 0; i < rowCount; i++) {
+						try {
+							arr[i] = list.peekRow(i);
+						} catch (LinkedListEmptyException e1) {
+							e1.printStackTrace();
+						}
+					}
+					
+					is.sortDesc(arr);
+					
+					for (int i = 0; i < rowCount; i++) {
+						model.setValueAt(arr[i].charAt(0), i, 0);
+						model.setValueAt(arr[i].charAt(1), i, 1);
+						model.setValueAt(arr[i].charAt(2), i, 2);
+						model.setValueAt(arr[i].charAt(3), i, 3);
 					}
 				}
-				
-				is.sortDesc(arr);
-				
-				for (int i = 0; i < rowCount; i++) {
-					model.setValueAt(arr[i].charAt(0), i, 0);
-					model.setValueAt(arr[i].charAt(1), i, 1);
-					model.setValueAt(arr[i].charAt(2), i, 2);
-					model.setValueAt(arr[i].charAt(3), i, 3);
-				}
+
 			}
 		});
 		
 		btnNameDesc.setBounds(744, 47, 119, 25);
 		frame.getContentPane().add(btnNameDesc);
 		
+		// Rating Ascending sort
 		JButton btnRatingAscending = new JButton("Rating Asc.");
 		btnRatingAscending.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -196,28 +215,36 @@ public class FinalGUI {
 				InsertionSort is = new InsertionSort();
 				
 				String[] arr = new String[rowCount];
-				for (int i = 0; i < rowCount; i++) {
-					try {
-						arr[i] = list.peekRow(i);
-					} catch (LinkedListEmptyException e1) {
-						e1.printStackTrace();
+				
+				if (model.getRowCount() == 0) {
+					JOptionPane.showMessageDialog(frame, "Table is empty, enter a game to sort");
+				}
+				else {
+					for (int i = 0; i < rowCount; i++) {
+						try {
+							arr[i] = list.peekRow(i);
+						} catch (LinkedListEmptyException e1) {
+							e1.printStackTrace();
+						}
+					}
+					
+					is.sort(arr);
+					
+					for (int i = 0; i < rowCount; i++) {
+						model.setValueAt(arr[i].charAt(0), i, 0);
+						model.setValueAt(arr[i].charAt(1), i, 1);
+						model.setValueAt(arr[i].charAt(2), i, 2);
+						model.setValueAt(arr[i].charAt(3), i, 3);
 					}
 				}
-				
-				is.sort(arr);
-				
-				for (int i = 0; i < rowCount; i++) {
-					model.setValueAt(arr[i].charAt(0), i, 0);
-					model.setValueAt(arr[i].charAt(1), i, 1);
-					model.setValueAt(arr[i].charAt(2), i, 2);
-					model.setValueAt(arr[i].charAt(3), i, 3);
-				}
+
 			}
 		});
 		
 		btnRatingAscending.setBounds(744, 227, 119, 25);
 		frame.getContentPane().add(btnRatingAscending);
 		
+		// Rating descending sort
 		JButton btnRatingDescending = new JButton("Rating Des.");
 		btnRatingDescending.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -226,28 +253,36 @@ public class FinalGUI {
 				InsertionSort is = new InsertionSort();
 				
 				String[] arr = new String[rowCount];
-				for (int i = 0; i < rowCount; i++) {
-					try {
-						arr[i] = list.peekRow(i);
-					} catch (LinkedListEmptyException e1) {
-						e1.printStackTrace();
+				
+				if (model.getRowCount() == 0) {
+					JOptionPane.showMessageDialog(frame, "Table is empty, enter a game to sort");
+				}
+				else {
+					for (int i = 0; i < rowCount; i++) {
+						try {
+							arr[i] = list.peekRow(i);
+						} catch (LinkedListEmptyException e1) {
+							e1.printStackTrace();
+						}
+					}
+					
+					is.sortDesc(arr);
+					
+					for (int i = 0; i < rowCount; i++) {
+						model.setValueAt(arr[i].charAt(0), i, 0);
+						model.setValueAt(arr[i].charAt(1), i, 1);
+						model.setValueAt(arr[i].charAt(2), i, 2);
+						model.setValueAt(arr[i].charAt(3), i, 3);
 					}
 				}
-				
-				is.sortDesc(arr);
-				
-				for (int i = 0; i < rowCount; i++) {
-					model.setValueAt(arr[i].charAt(0), i, 0);
-					model.setValueAt(arr[i].charAt(1), i, 1);
-					model.setValueAt(arr[i].charAt(2), i, 2);
-					model.setValueAt(arr[i].charAt(3), i, 3);
-				}
+
 			}
 		});
 		
 		btnRatingDescending.setBounds(744, 263, 119, 25);
 		frame.getContentPane().add(btnRatingDescending);
 		
+		// Genre Descending sort
 		JButton btnGenreDes = new JButton("Genre Des.");
 		btnGenreDes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -256,27 +291,36 @@ public class FinalGUI {
 				InsertionSort is = new InsertionSort();
 				
 				String[] arr = new String[rowCount];
-				for (int i = 0; i < rowCount; i++) {
-					try {
-						arr[i] = list.peekRow(i);
-					} catch (LinkedListEmptyException e1) {
-						e1.printStackTrace();
+				
+				if (model.getRowCount() == 0) {
+					JOptionPane.showMessageDialog(frame, "Table is empty, enter a game to sort");
+				}
+				
+				else {
+					for (int i = 0; i < rowCount; i++) {
+						try {
+							arr[i] = list.peekRow(i);
+						} catch (LinkedListEmptyException e1) {
+							e1.printStackTrace();
+						}
+					}
+					
+					is.sortDesc(arr);
+					
+					for (int i = 0; i < rowCount; i++) {
+						model.setValueAt(arr[i].charAt(0), i, 0);
+						model.setValueAt(arr[i].charAt(1), i, 1);
+						model.setValueAt(arr[i].charAt(2), i, 2);
+						model.setValueAt(arr[i].charAt(3), i, 3);
 					}
 				}
-				
-				is.sortDesc(arr);
-				
-				for (int i = 0; i < rowCount; i++) {
-					model.setValueAt(arr[i].charAt(0), i, 0);
-					model.setValueAt(arr[i].charAt(1), i, 1);
-					model.setValueAt(arr[i].charAt(2), i, 2);
-					model.setValueAt(arr[i].charAt(3), i, 3);
-				}
+
 			}
 		});
 		btnGenreDes.setBounds(744, 119, 119, 25);
 		frame.getContentPane().add(btnGenreDes);
 		
+		// Genre Ascending sort
 		JButton btnGenreAsc = new JButton("Genre Asc.");
 		btnGenreAsc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -285,27 +329,35 @@ public class FinalGUI {
 				InsertionSort is = new InsertionSort();
 				
 				String[] arr = new String[rowCount];
-				for (int i = 0; i < rowCount; i++) {
-					try {
-						arr[i] = list.peekRow(i);
-					} catch (LinkedListEmptyException e1) {
-						e1.printStackTrace();
+				
+				if (model.getRowCount() == 0) {
+					JOptionPane.showMessageDialog(frame, "Table is empty, enter a game to sort");
+				}
+				else {
+					for (int i = 0; i < rowCount; i++) {
+						try {
+							arr[i] = list.peekRow(i);
+						} catch (LinkedListEmptyException e1) {
+							e1.printStackTrace();
+						}
+					}
+					
+					is.sort(arr);
+					
+					for (int i = 0; i < rowCount; i++) {
+						model.setValueAt(arr[i].charAt(0), i, 0);
+						model.setValueAt(arr[i].charAt(1), i, 1);
+						model.setValueAt(arr[i].charAt(2), i, 2);
+						model.setValueAt(arr[i].charAt(3), i, 3);
 					}
 				}
-				
-				is.sort(arr);
-				
-				for (int i = 0; i < rowCount; i++) {
-					model.setValueAt(arr[i].charAt(0), i, 0);
-					model.setValueAt(arr[i].charAt(1), i, 1);
-					model.setValueAt(arr[i].charAt(2), i, 2);
-					model.setValueAt(arr[i].charAt(3), i, 3);
-				}
+
 			}
 		});
 		btnGenreAsc.setBounds(744, 83, 119, 25);
 		frame.getContentPane().add(btnGenreAsc);
 		
+		// Release descending sort
 		JButton btnReleaseDes = new JButton("Release Des.");
 		btnReleaseDes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -314,27 +366,35 @@ public class FinalGUI {
 				InsertionSort is = new InsertionSort();
 				
 				String[] arr = new String[rowCount];
-				for (int i = 0; i < rowCount; i++) {
-					try {
-						arr[i] = list.peekRow(i);
-					} catch (LinkedListEmptyException e1) {
-						e1.printStackTrace();
+				
+				if (model.getRowCount() == 0) {
+					JOptionPane.showMessageDialog(frame, "Table is empty, enter a game to sort");
+				}
+				else {
+					for (int i = 0; i < rowCount; i++) {
+						try {
+							arr[i] = list.peekRow(i);
+						} catch (LinkedListEmptyException e1) {
+							e1.printStackTrace();
+						}
+					}
+					
+					is.sortDesc(arr);
+					
+					for (int i = 0; i < rowCount; i++) {
+						model.setValueAt(arr[i].charAt(0), i, 0);
+						model.setValueAt(arr[i].charAt(1), i, 1);
+						model.setValueAt(arr[i].charAt(2), i, 2);
+						model.setValueAt(arr[i].charAt(3), i, 3);
 					}
 				}
-				
-				is.sortDesc(arr);
-				
-				for (int i = 0; i < rowCount; i++) {
-					model.setValueAt(arr[i].charAt(0), i, 0);
-					model.setValueAt(arr[i].charAt(1), i, 1);
-					model.setValueAt(arr[i].charAt(2), i, 2);
-					model.setValueAt(arr[i].charAt(3), i, 3);
-				}
+
 			}
 		});
 		btnReleaseDes.setBounds(744, 191, 119, 25);
 		frame.getContentPane().add(btnReleaseDes);
 		
+		// Release Ascending sort
 		JButton btnReleaseAsc = new JButton("Release Asc.");
 		btnReleaseAsc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -343,49 +403,61 @@ public class FinalGUI {
 				InsertionSort is = new InsertionSort();
 				
 				String[] arr = new String[rowCount];
-				for (int i = 0; i < rowCount; i++) {
-					try {
-						arr[i] = list.peekRow(i);
-					} catch (LinkedListEmptyException e1) {
-						e1.printStackTrace();
+				
+				if (model.getRowCount() == 0) {
+					JOptionPane.showMessageDialog(frame, "Table is empty, enter a game to sort");
+				}
+				else {
+					
+					for (int i = 0; i < rowCount; i++) {
+						try {
+							arr[i] = list.peekRow(i);
+						} catch (LinkedListEmptyException e1) {
+							e1.printStackTrace();
+						}
+					}
+					
+					is.sort(arr);
+					
+					for (int i = 0; i < rowCount; i++) {
+						model.setValueAt(arr[i].charAt(0), i, 0);
+						model.setValueAt(arr[i].charAt(1), i, 1);
+						model.setValueAt(arr[i].charAt(2), i, 2);
+						model.setValueAt(arr[i].charAt(3), i, 3);
+						
+						
 					}
 				}
-				
-				is.sort(arr);
-				
-				for (int i = 0; i < rowCount; i++) {
-					model.setValueAt(arr[i].charAt(0), i, 0);
-					model.setValueAt(arr[i].charAt(1), i, 1);
-					model.setValueAt(arr[i].charAt(2), i, 2);
-					model.setValueAt(arr[i].charAt(3), i, 3);
-				}
+
 			}
 		});
-		
-		/*
-		 * End of sorts
-		 */
 		
 		btnReleaseAsc.setBounds(744, 155, 119, 25);
 		frame.getContentPane().add(btnReleaseAsc);
 
-		// Create rows object
+		/*
+		 * End of sorts
+		 */
+		
 		Object[] row = new Object[4];
 
-		// Once the add button is pressed
+		// Add button
 		btnAdd.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				// If the Priority Queue is full, show a message and do nothing
 				if (pq.isFull()) {
 					JOptionPane.showMessageDialog(frame, "The queue of games is full, please delete a game");
 				}
+				
 				// If a data field is empty, prompt to finish entering data
 				if (nameText.getText().equals("") || genreText.getText().equals("") || releaseText.getText().equals("")
 						|| ratingText.getText().equals("")) {
 					JOptionPane.showMessageDialog(frame, "Please enter all Data");
-					// If all passes, make a game and insert the inputed values
+
+				// Add game
 				} else {
 					Game game = new Game();
 
@@ -394,15 +466,14 @@ public class FinalGUI {
 					game.releaseDate = releaseText.getText();
 					game.rating = ratingText.getText();
 
-					// Try to add the game to the gameList named list made at the top
+					// Add to list
 					try {
 						list.addLast(game);
 						lblAddedVals.setText("Most recently added data: " + list.printNew());
 					} catch (LinkedListFullException e1) {
 					}
 
-					// Enqueue the inputed fields into the priority queue, use the priority queue to
-					// then fill in the table
+					// Enqueue then make rows based off the enqueues values
 					try {
 						pq.enqueue(nameText.getText(), genreText.getText(), releaseText.getText(),
 								ratingText.getText());
@@ -421,7 +492,7 @@ public class FinalGUI {
 			}
 		});
 
-		// Delete button clicked
+		// Delete button
 		btnDelete.addActionListener(new ActionListener() {
 
 			@Override
@@ -430,8 +501,7 @@ public class FinalGUI {
 				int i = table.getSelectedRow();
 
 				// The user must click the row to delete, otherwise won't work. If it is clicked
-				// after a row
-				// selected, it deletes that row
+				// after a row selected, it deletes that row
 				if (i >= 0) {
 					model.removeRow(i);
 
@@ -452,6 +522,7 @@ public class FinalGUI {
 			}
 		});
 
+		// Adds mouse listener
 		table.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -461,12 +532,13 @@ public class FinalGUI {
 
 				nameText.setText(model.getValueAt(i, 0).toString());
 				genreText.setText(model.getValueAt(i, 1).toString());
-				releaseText.setText(model.getValueAt(i, 2).toString());
-				ratingText.setText(model.getValueAt(i, 3).toString());
+				ratingText.setText(model.getValueAt(i, 2).toString());
+				releaseText.setText(model.getValueAt(i, 3).toString());
 			}
 		});
 
-		// On click, update selected row
+		// With row clicked, update the row
+		
 		btnUpdate.addActionListener(new ActionListener() {
 
 			@Override
@@ -489,6 +561,6 @@ public class FinalGUI {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-
+		}
 	}
-}
+

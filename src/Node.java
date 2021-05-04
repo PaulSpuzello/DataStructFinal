@@ -1,9 +1,11 @@
 
 
 public class Node {
+	// Variables
 	int jobNum;
 	String priority;
 	
+	// Setters/getters
 	public int getJobNum() {
 		return jobNum;
 	}

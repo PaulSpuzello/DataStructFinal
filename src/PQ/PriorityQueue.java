@@ -12,7 +12,6 @@ public class PriorityQueue {
 	private int tail;
 	public int size;
 	private int maxSize;
-	private LinkedList<Object> list;
 	public Node node = new Node();
 
 	// Constructors
@@ -21,7 +20,6 @@ public class PriorityQueue {
 		this.size = 0;
 		this.head = -1;
 		this.tail = -1;
-		this.list = new LinkedList<>();
 		this.node = new Node();
 	}
 
@@ -30,11 +28,11 @@ public class PriorityQueue {
 		this.size = 0;
 		this.head = -1;
 		this.tail = -1;
-		this.list = new LinkedList<>();
 		this.node = new Node();
 	}
 
-	public boolean isFull() { // Check if full
+	// Check if full
+	public boolean isFull() { 
 		if (size == maxSize) {
 			return true;
 		} else {
@@ -42,7 +40,8 @@ public class PriorityQueue {
 		}
 	}
 
-	public boolean isEmpty() { // Check if empty
+	// Check if empty
+	public boolean isEmpty() { 
 		if (size == 0) {
 			return true;
 		} else {
@@ -51,15 +50,16 @@ public class PriorityQueue {
 
 	}
 
-	public int size() { // Check size
+	// Return size
+	public int size() { 
 		return this.head + 1;
 	}
 
+	// Add to the priority queue
 	public void enqueue(String gameName, String gameGenre, String releaseDate, String rating)
-			throws QueueFullException { // Put something in a queue
-		System.out.println(size);
+			throws QueueFullException {
+		
 		if (!this.isFull()) {
-			list.addLast(gameName + gameGenre + releaseDate + rating);
 
 			node.setName(gameName);
 			node.setGenre(gameGenre);
@@ -74,35 +74,15 @@ public class PriorityQueue {
 		}
 	}
 
-	public Object dequeue() throws QueueEmptyException { // Take something out of a queue
-		Object item;
-		System.out.println(size);
+	// Remove the value first put into the queue
+	public void dequeue() throws QueueEmptyException {
+		
 		if (!this.isEmpty()) {
-			item = list.get(tail);
-			list.remove(tail);
-			
 			size--;
-			head--;
-			tail--;
-			return item;
+			head -= 1;
+			
 		} else {
 			throw new QueueEmptyException();
 		}
-	}
-
-	public String[] printPriorityQueue() throws QueueEmptyException { // Print the queue in order of priority
-
-		String[] queueString = { "", "", "", "", "", "", "", "", "", "", "" };
-
-		if (this.isEmpty()) {
-			throw new QueueEmptyException();
-		}
-
-		for (int i = 0; i <= head; i++) { // Add to the queueString array
-			queueString[i] = list.get(i).toString();
-
-		}
-		Arrays.sort(queueString); // Sort the array
-		return queueString;
 	}
 }

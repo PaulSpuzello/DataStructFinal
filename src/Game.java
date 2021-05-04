@@ -1,10 +1,12 @@
 public class Game {
+	// Variables
 	public int ID;
 	public String name;
 	public String releaseDate;
 	public String genre;
 	public String rating;
 	
+	// Setters/Getters
 	public int getID() {
 		return ID;
 	}

@@ -1,8 +1,10 @@
 package PQ;
 
 public class Node {
+	// Variables
 	public String name, genre, releaseDate, rating;
 
+	// Setters/getters
 	public String getName() {
 		return name;
 	}
