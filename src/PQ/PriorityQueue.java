@@ -9,7 +9,6 @@ public class PriorityQueue {
 	private int tail;
 	public int size;
 	private int maxSize;
-	Node next;
 	public Node node = new Node();
 
 	// Constructors
