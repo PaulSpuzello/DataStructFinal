@@ -67,21 +67,13 @@ public class GameList {
 		}
 		return "";
 	}
-	
+
 	public String peekRow(int row) throws LinkedListEmptyException {
 		if (!this.isEmpty()) {
-			//PriorityQueue pq = new PriorityQueue();
-			
-			//pq.node.name = gameList[row].name;
-			//pq.node.genre = gameList[row].genre;
-			//pq.node.releaseDate = gameList[row].releaseDate;
-			//pq.node.rating = gameList[row].rating;
-			
-			return  gameList[row].name + gameList[row].genre + gameList[row].releaseDate + gameList[row].rating;
-			//return pq;
-		} else 
+			return gameList[row].name + gameList[row].genre + gameList[row].releaseDate + gameList[row].rating;
+		} else
 			throw new LinkedListEmptyException();
-		}
+	}
 
 	// Remove a value depending on index
 	public double remove(int index) throws LinkedListEmptyException {
@@ -115,14 +107,14 @@ public class GameList {
 		}
 		return listString;
 	}
-	
+
 	// Print last added game
-	public String printNew() {
+	public String printNew(int row) {
 		String listString = new String();
-		
-		listString += " " + gameList[size - 1].getName() + " " + gameList[size - 1].getGenre() + " " + gameList[size - 1].getRating()
-				+ " " + gameList[size - 1].getReleaseDate() + " ";
-		
+
+		listString += " " + gameList[row].getName() + " " + gameList[row].getGenre() + " " + gameList[row].getRating()
+				+ " " + gameList[row].getReleaseDate() + " ";
+
 		return listString;
 	}
 }

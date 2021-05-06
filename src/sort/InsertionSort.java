@@ -1,10 +1,10 @@
 package sort;
 
 public class InsertionSort {
-	
+
 	// Go through the array and sort by ascending
 	public void sort(String[] arr) {
-		
+
 		int i, j;
 		String key = "";
 
@@ -22,7 +22,7 @@ public class InsertionSort {
 			arr[i + 1] = key;
 		}
 	}
-	
+
 	// Go through the array and sort by d
 	public void sortDesc(String[] arr) {
 		int i, j;

@@ -115,7 +115,7 @@ class FinalGUITest {
 	void testDequeue() throws QueueFullException, QueueEmptyException {
 		pq.enqueue("Super Mario", "Platformer", "8/12/1996", "4/5");
 		pq.dequeue();
-		
+
 		assertEquals("", pq.node.name);
 	}
 }

@@ -30,7 +30,7 @@ public class PriorityQueue {
 	}
 
 	// Check if full
-	public boolean isFull() { 
+	public boolean isFull() {
 		if (size == maxSize) {
 			return true;
 		} else {
@@ -39,7 +39,7 @@ public class PriorityQueue {
 	}
 
 	// Check if empty
-	public boolean isEmpty() { 
+	public boolean isEmpty() {
 		if (size == 0) {
 			return true;
 		} else {
@@ -49,14 +49,14 @@ public class PriorityQueue {
 	}
 
 	// Return size
-	public int size() { 
+	public int size() {
 		return this.head + 1;
 	}
 
 	// Add to the priority queue
 	public void enqueue(String gameName, String gameGenre, String releaseDate, String rating)
 			throws QueueFullException {
-		
+
 		if (!this.isFull()) {
 
 			node.setName(gameName);
@@ -70,35 +70,17 @@ public class PriorityQueue {
 		} else {
 			throw new QueueFullException();
 		}
-		/*
-		if (!this.isFull()) {
-
-			Node temp = new Node();
-			
-			temp.setName(gameName);
-			temp.setGenre(gameGenre);
-			temp.setReleaseDate(releaseDate);
-			temp.setRating(rating);
-
-			tail = (tail + 1) % maxSize;
-			size++;
-			head++;
-			
-			return temp;
-		} else {
-			throw new QueueFullException();
-		}*/
 	}
 
 	// Remove the value first put into the queue
 	public void dequeue() throws QueueEmptyException {
-		
-		if (!this.isEmpty()) {			
+
+		if (!this.isEmpty()) {
 			node.setName("");
 			node.setGenre("");
 			node.setReleaseDate("");
 			node.setRating("");
-			
+
 			size--;
 			head -= 1;
 		} else {
